@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DJ P Rock | Official Website</title>
+  <meta name="description"
+    content="Official website of DJ P Rock. Premier DJ for weddings, clubs, corporate events, and parties. Listen to mixes and book now." />
+
+  <!-- Preconnect to external domains for faster resource loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <!-- Preload critical fonts with display swap -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Critical inline styles for instant render -->
+  <style>
+    /* Prevent flash of unstyled content */
+    html {
+      background-color: #000;
+    }
+
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+
+    /* Initial loading state */
+    .initial-loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      z-index: 9999;
+    }
+
+    .initial-loader .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(139, 92, 246, 0.3);
+      border-top-color: #8b5cf6;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Initial loader shown before React hydrates -->
+  <div id="root">
+    <div class="initial-loader" id="initial-loader">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    // Remove initial loader once React is ready
+    window.addEventListener('load', function () {
+      var loader = document.getElementById('initial-loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity 0.2s';
+        setTimeout(function () { loader.remove(); }, 200);
+      }
+    });
+  </script>
+</body>
+
+</html>
